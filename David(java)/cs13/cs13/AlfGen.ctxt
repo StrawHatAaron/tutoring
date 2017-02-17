@@ -1,0 +1,24 @@
+#BlueJ class context
+comment0.params=
+comment0.target=void\ AlfsGen()
+comment1.params=a
+comment1.target=void\ add(java.lang.Object)
+comment10.params=args
+comment10.target=void\ main(java.lang.String[])
+comment2.params=index
+comment2.target=void\ remove(int)
+comment3.params=
+comment3.target=int\ size()
+comment4.params=index
+comment4.target=java.lang.Object\ get(int)
+comment5.params=index\ a
+comment5.target=void\ set(int,\ java.lang.Object)
+comment6.params=
+comment6.target=java.lang.String\ toString()
+comment7.params=index\ a
+comment7.target=void\ insert(int,\ java.lang.Object)
+comment8.params=a
+comment8.target=int\ indexOf(java.lang.Object)
+comment9.params=
+comment9.target=void\ clear()
+numComments=11
