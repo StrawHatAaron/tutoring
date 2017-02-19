@@ -1,23 +1,22 @@
 
 /**
- * GIL - Generic Integer List
+ * GL - Generic Integer List
  * 
  * @author Tim McGowen
  * @version version 1.0
  */
-public class GIL
+public class GL<X>
 {
    // Use an array to create the list
-   private int arr[];
+   private X[] arr;
    private int size;
 
    /*
-    * Constructor for objects of class GIL
+    * Constructor for objects of class GL
     */
-   public GIL()
+   public GL()
    {
-      arr = new int[10];
-      size = 0;
+      this.newArray();
    }
 
    /*
@@ -30,22 +29,17 @@ public class GIL
       return size;
    }
 
+
    /*
     * add - add one value to the list in the next available position
     * 
     * param - integer to add to the list
     */
-   public void add(int value)
+   public void add(X value)
    {
       if (size == arr.length) // Is arr full? Then expand by 20%
       {
-         int[] arr2 = new int[(int)(arr.length * 1.2)];
-         // Copy elements from arr to arr2
-         for (int i = 0; i < arr.length; i++)
-            arr2[i] = arr[i];
-         // Have arr point to new array
-         arr = arr2;
-         // Old array will be Garbage Collected
+         this.expandArray();
       }
    
       arr[size] = value;
@@ -58,7 +52,7 @@ public class GIL
     * param - index into the list for the value to return
     * return - integer value
     */
-   public int get(int index)
+   public X get(int index)
    {
       return arr[index];
    }
@@ -68,7 +62,7 @@ public class GIL
     */
    public void clear()
    {
-      arr = new int[10];
+      arr = (X[]) new Object[10];// arr;
       size = 0;
    }
 
@@ -78,7 +72,7 @@ public class GIL
     * param - index to insert new element
     * param - integer value of new element
     */
-   public void insert(int index, int value)
+   public void insert(int index, X value)
    {
       // If the index points to an empty element, add it.
       if ( index >= size )
@@ -87,13 +81,7 @@ public class GIL
       {
          if (size == arr.length) // Is arr full? Then expand by 20%
          {
-            int[] arr2 = new int[(int)(arr.length * 1.2)];
-            // Copy elems from arr to arr2
-            for (int i = 0; i < arr.length; i++)
-               arr2[i] = arr[i];
-            // Have arr point to new array
-            arr = arr2;
-            // Old array will be Garbage Collected
+            this.expandArray();
          }
          // Open a hole to insert the value
          for (int i = size; i > index; i--)
@@ -134,12 +122,23 @@ public class GIL
    //Create new Array
    //*
    private void newArray(){
-      arr = new int[10];
+      arr = (X[]) new Object[10];
       size = 0;
    }
 
-  public void set(int index, int value)
-  {
+   private void expandArray(){
+      X[] arr2;
+      arr2 = (X[]) new Object[(int)(arr.length * 1.2)];
+    // Copy elems from arr to arr2
+      for (int i = 0; i < arr.length; i++)
+         arr2[i] = arr[i];
+      // Have arr point to new array
+      arr = arr2;
+      // Old array will be Garbage Collected
+   }
+
+   public void set(int index, X value)
+   {
     // Code to set an element of your string list at specified index
     // to the provided value. You cannot set an item beyond that last
     // item in the list. Set will only work on elements greater than
@@ -147,28 +146,28 @@ public class GIL
     // list with set. Display an error if an index is out of bounds.
     
     //dont 
-    if((index<size) && index>=0){
-      arr[index]=value;
-    }
-    else{
-      System.out.println("index is out of bounds");
-    }
-  }
+      if((index<size) && index>=0){
+         arr[index]=value;
+      }
+      else{
+         System.out.println("index is out of bounds");
+      }
+   }
 
-  public void remove(int index)
-  {
+   public void remove(int index)
+   {
     // Code to remove the element at the specified index. All elements
     // after the index are shifted down to fill the hole. You cannot
     // remove an item beyond the last item in the list. Remove will only
     // work on elements greater than or equal to zero and less than size.
     // Display an error if an index is out of bounds.
-    if((index<size) && index>=0){
-      for(int i = index; i < size; i++){
-        arr[i+1]=arr[i];
+      if((index<size) && index>=0){
+         for(int i = index; i < size; i++){
+            arr[i+1]=arr[i];
+         }
       }
-    }
-    else{
-      System.out.println("index is out of bounds");
-    }
-  }
+      else{
+         System.out.println("index is out of bounds");
+      }
+   }
 }

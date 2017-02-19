@@ -10,7 +10,7 @@ public class GILTest
    {
       int errors = 0;
    
-      GL<Integer> list = new GL();
+      GL<Integer> list = new GL<Integer>();
       //GIL list = new GIL();
       /******************************************************************/
       /* A new list should return a size of zero                        */

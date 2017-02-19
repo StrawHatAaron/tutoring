@@ -4,8 +4,11 @@ JVM = java
 
 default: GL.class GILTest.class
 
-GLTest.class: GILTest.java
+GILTest.class: GILTest.java
 	$(JCC) $(JFLAGS) GLTest.java
+
+GSLTest.class: GSLTest.java
+	$(JCC) $(JFLAGS) GSTest.java
 
 GL.class: GL.java
 	$(JCC) $(JFLAGS) GL.java
@@ -14,7 +17,7 @@ clean:
 	$(RM) *.class
 
 run:
-	$(JVM) GILTest
+	$(JVM) GSLTest
 
 jar:
 	jar cvf GL.jar *

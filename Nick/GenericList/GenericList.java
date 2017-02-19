@@ -5,8 +5,7 @@
  * @author Tim McGowen
  * @version version 1.0
  */
-public class GL<X>
-{
+public class GenericList<X>{
    // Use an array to create the list
    private X[] arr;
    private int size;
@@ -14,7 +13,7 @@ public class GL<X>
    /*
     * Constructor for objects of class GL
     */
-   public GL()
+   public GenericList()
    {
       this.newArray();
    }
@@ -81,7 +80,7 @@ public class GL<X>
       {
          if (size == arr.length) // Is arr full? Then expand by 20%
          {
-          this.expandArray();
+            this.expandArray();
          }
          // Open a hole to insert the value
          for (int i = size; i > index; i--)
@@ -126,19 +125,19 @@ public class GL<X>
       size = 0;
    }
 
-  private void expandArray(){
-    X[] arr2;
-    arr2 = (X[]) new Object[(int)(arr.length * 1.2)];
+   private void expandArray(){
+      X[] arr2;
+      arr2 = (X[]) new Object[(int)(arr.length * 1.2)];
     // Copy elems from arr to arr2
       for (int i = 0; i < arr.length; i++)
          arr2[i] = arr[i];
       // Have arr point to new array
       arr = arr2;
       // Old array will be Garbage Collected
-  }
+   }
 
-  public void set(int index, X value)
-  {
+   public void set(int index, X value)
+   {
     // Code to set an element of your string list at specified index
     // to the provided value. You cannot set an item beyond that last
     // item in the list. Set will only work on elements greater than
@@ -146,28 +145,28 @@ public class GL<X>
     // list with set. Display an error if an index is out of bounds.
     
     //dont 
-    if((index<size) && index>=0){
-      arr[index]=value;
-    }
-    else{
-      System.out.println("index is out of bounds");
-    }
-  }
+      if((index<size) && index>=0){
+         arr[index]=value;
+      }
+      else{
+         System.out.println("index is out of bounds");
+      }
+   }
 
-  public void remove(int index)
-  {
+   public void remove(int index)
+   {
     // Code to remove the element at the specified index. All elements
     // after the index are shifted down to fill the hole. You cannot
     // remove an item beyond the last item in the list. Remove will only
     // work on elements greater than or equal to zero and less than size.
     // Display an error if an index is out of bounds.
-    if((index<size) && index>=0){
-      for(int i = index; i < size; i++){
-        arr[i+1]=arr[i];
+      if((index<size) && index>=0){
+         for(int i = index; i < size; i++){
+            arr[i+1]=arr[i];
+         }
       }
-    }
-    else{
-      System.out.println("index is out of bounds");
-    }
-  }
+      else{
+         System.out.println("index is out of bounds");
+      }
+   }
 }
