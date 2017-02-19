@@ -1,22 +1,22 @@
 
 /**
- * GSL - Generic Integer List
+ * GIL - Generic Integer List
  * 
  * @author Tim McGowen
  * @version version 1.0
  */
-public class GSL
+public class GIL
 {
    // Use an array to create the list
-   private String arr[];
+   private int arr[];
    private int size;
 
    /*
-    * Constructor for objects of class GSL
+    * Constructor for objects of class GIL
     */
-   public GSL()
+   public GIL()
    {
-      arr = new String[10];
+      arr = new int[10];
       size = 0;
    }
 
@@ -35,11 +35,11 @@ public class GSL
     * 
     * param - integer to add to the list
     */
-   public void add(String value)
+   public void add(int value)
    {
       if (size == arr.length) // Is arr full? Then expand by 20%
       {
-         String[] arr2 = new String[(int)(arr.length * 1.2)];
+         int[] arr2 = new int[(int)(arr.length * 1.2)];
          // Copy elements from arr to arr2
          for (int i = 0; i < arr.length; i++)
             arr2[i] = arr[i];
@@ -58,7 +58,7 @@ public class GSL
     * param - index into the list for the value to return
     * return - integer value
     */
-   public String get(int index)
+   public int get(int index)
    {
       return arr[index];
    }
@@ -68,7 +68,7 @@ public class GSL
     */
    public void clear()
    {
-      arr = new String[10];
+      arr = new int[10];
       size = 0;
    }
 
@@ -78,7 +78,7 @@ public class GSL
     * param - index to insert new element
     * param - integer value of new element
     */
-   public void insert(int index, String value)
+   public void insert(int index, int value)
    {
       // If the index points to an empty element, add it.
       if ( index >= size )
@@ -87,7 +87,7 @@ public class GSL
       {
          if (size == arr.length) // Is arr full? Then expand by 20%
          {
-            String[] arr2 = new String[(int)(arr.length * 1.2)];
+            int[] arr2 = new int[(int)(arr.length * 1.2)];
             // Copy elems from arr to arr2
             for (int i = 0; i < arr.length; i++)
                arr2[i] = arr[i];
@@ -129,6 +129,7 @@ public class GSL
          System.out.println("List has " + (arr.length - size) + " spaces left\n");
    }
 
+
    //*
    //Create new Array
    //*
@@ -137,7 +138,7 @@ public class GSL
       size = 0;
    }
 
-  public void set(int index, String value)
+  public void set(int index, int value)
   {
     // Code to set an element of your string list at specified index
     // to the provided value. You cannot set an item beyond that last

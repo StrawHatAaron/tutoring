@@ -1,23 +1,22 @@
 
 /**
- * GSL - Generic Integer List
+ * GL - Generic Integer List
  * 
  * @author Tim McGowen
  * @version version 1.0
  */
-public class GSL
+public class GL<X>
 {
    // Use an array to create the list
-   private String arr[];
+   private X[] arr;
    private int size;
 
    /*
-    * Constructor for objects of class GSL
+    * Constructor for objects of class GL
     */
-   public GSL()
+   public GL()
    {
-      arr = new String[10];
-      size = 0;
+      this.newArray();
    }
 
    /*
@@ -30,22 +29,17 @@ public class GSL
       return size;
    }
 
+
    /*
     * add - add one value to the list in the next available position
     * 
     * param - integer to add to the list
     */
-   public void add(String value)
+   public void add(X value)
    {
       if (size == arr.length) // Is arr full? Then expand by 20%
       {
-         String[] arr2 = new String[(int)(arr.length * 1.2)];
-         // Copy elements from arr to arr2
-         for (int i = 0; i < arr.length; i++)
-            arr2[i] = arr[i];
-         // Have arr point to new array
-         arr = arr2;
-         // Old array will be Garbage Collected
+         this.expandArray();
       }
    
       arr[size] = value;
@@ -58,7 +52,7 @@ public class GSL
     * param - index into the list for the value to return
     * return - integer value
     */
-   public String get(int index)
+   public X get(int index)
    {
       return arr[index];
    }
@@ -68,7 +62,7 @@ public class GSL
     */
    public void clear()
    {
-      arr = new String[10];
+      arr = (X[]) new Object[10];// arr;
       size = 0;
    }
 
@@ -78,7 +72,7 @@ public class GSL
     * param - index to insert new element
     * param - integer value of new element
     */
-   public void insert(int index, String value)
+   public void insert(int index, X value)
    {
       // If the index points to an empty element, add it.
       if ( index >= size )
@@ -87,13 +81,7 @@ public class GSL
       {
          if (size == arr.length) // Is arr full? Then expand by 20%
          {
-            String[] arr2 = new String[(int)(arr.length * 1.2)];
-            // Copy elems from arr to arr2
-            for (int i = 0; i < arr.length; i++)
-               arr2[i] = arr[i];
-            // Have arr point to new array
-            arr = arr2;
-            // Old array will be Garbage Collected
+          this.expandArray();
          }
          // Open a hole to insert the value
          for (int i = size; i > index; i--)
@@ -129,15 +117,27 @@ public class GSL
          System.out.println("List has " + (arr.length - size) + " spaces left\n");
    }
 
+
    //*
    //Create new Array
    //*
    private void newArray(){
-      arr = new int[10];
+      arr = (X[]) new Object[10];
       size = 0;
    }
 
-  public void set(int index, String value)
+  private void expandArray(){
+    X[] arr2;
+    arr2 = (X[]) new Object[(int)(arr.length * 1.2)];
+    // Copy elems from arr to arr2
+      for (int i = 0; i < arr.length; i++)
+         arr2[i] = arr[i];
+      // Have arr point to new array
+      arr = arr2;
+      // Old array will be Garbage Collected
+  }
+
+  public void set(int index, X value)
   {
     // Code to set an element of your string list at specified index
     // to the provided value. You cannot set an item beyond that last

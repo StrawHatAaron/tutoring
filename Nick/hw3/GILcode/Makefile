@@ -2,13 +2,13 @@ JCC = javac
 JFLAGS = -g
 JVM = java
 
-default: GIL.class GILTest.class
+default: GL.class GILTest.class
 
-GILTest.class: GILTest.java
-	$(JCC) $(JFLAGS) GILTest.java
+GLTest.class: GILTest.java
+	$(JCC) $(JFLAGS) GLTest.java
 
-GIL.class: GIL.java
-	$(JCC) $(JFLAGS) GIL.java
+GL.class: GL.java
+	$(JCC) $(JFLAGS) GL.java
 
 clean:
 	$(RM) *.class
@@ -17,4 +17,4 @@ run:
 	$(JVM) GILTest
 
 jar:
-	jar cvf GIL.jar *
+	jar cvf GL.jar *

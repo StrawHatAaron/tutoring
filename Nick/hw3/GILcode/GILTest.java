@@ -4,14 +4,14 @@
  * author Tim McGowen
  * version 1.0
  */
-public class GSLTest
+public class GILTest
 {
    public static void main(String[] args)
    {
       int errors = 0;
    
-      GSL list = new GSL();
-      System.out.println(list.size());
+      GL<Integer> list = new GL();
+      //GIL list = new GIL();
       /******************************************************************/
       /* A new list should return a size of zero                        */
       /******************************************************************/
@@ -24,7 +24,7 @@ public class GSLTest
       /******************************************************************/
       /* Adding an element should change the size to 1                  */
       /******************************************************************/
-      list.add("Nick");
+      list.add(3);
       if ( list.size() != 1)
       {
          System.out.println("ERROR: Add one element to list does not return size of 1");
@@ -34,7 +34,7 @@ public class GSLTest
       /******************************************************************/
       /* Is value at the first position the value we expect?            */
       /******************************************************************/
-      if ( list.get(0) != "Nick" )
+      if ( list.get(0) != null )
       {
          System.out.println("ERROR: The value of the first element is not what we set it to be");
          errors++;
@@ -50,7 +50,7 @@ public class GSLTest
       /* Add 9 more values to list. The size should be 10.              */
       /******************************************************************/
       for (int i = 0; i < 9; i++)
-         list.add("Mike");
+         list.add(i + 1);
       if ( list.size() != 10 )
       {
          System.out.println("ERROR: The size is not equal to 10");
@@ -63,13 +63,13 @@ public class GSLTest
       /******************************************************************/
       /* Add one more value. The list should expand                     */
       /******************************************************************/
-      list.add("Yolo");
+      list.add(11);
       if ( list.size() != 11)
       {
          System.out.println("ERROR: Add one more element to list does not return size of 11");
          errors++;
       }
-      if ( list.get(2) != "Yolo")
+      if ( list.get(10) != 11 )
       {
          System.out.println("ERROR: The value of the 11th element is not what we set it to be");
          errors++;
@@ -80,13 +80,13 @@ public class GSLTest
       /******************************************************************/
       /* Insert a new element at the beginning of the list              */
       /******************************************************************/
-      list.insert(0, "Mikana");
+      list.insert(0, 111);
       if ( list.size() != 12)
       {
          System.out.println("ERROR: Add one more element to list does not return size of 12");
          errors++;
       }
-      if ( list.get(0) != "Mikana" )
+      if ( list.get(0) != 111 )
       {
          System.out.println("ERROR: The value of the first element is not what we set it to be");
          errors++;
@@ -98,13 +98,13 @@ public class GSLTest
       /******************************************************************/
       /*Insert a new element in the middle of the list                  */
       /******************************************************************/
-      list.insert(5, "Chase");
+      list.insert(5, 2222);
       if ( list.size() != 13)
       {
          System.out.println("ERROR: Add one more element to list does not return size of 13");
          errors++;
       }
-      if ( list.get(5) != "Chase" )
+      if ( list.get(5) != 2222 )
       {
          System.out.println("ERROR: The value of the sixth element is not what we set it to be");
          errors++;
@@ -112,12 +112,12 @@ public class GSLTest
       // Display the list
       System.out.println("Display list with insert at index 5");
       list.display();
-      
+   
       /******************************************************************/
       /* Display list as a string                                       */
       /******************************************************************/
       String stringList = list.toString();
-      if (!("Mikana, Nick, Mike, Mike, Mike, Chase, Mike, Mike, Mike, Mike, Mike, Mike, Yolo".equals(stringList)))
+      if (!("111, 3, 1, 2, 3, 2222, 4, 5, 6, 7, 8, 9, 11".equals(stringList)))
       {
          System.out.println("ERROR: toString does not return a properly formatted string");
          System.out.println("ERROR: >" + stringList + "<");
