@@ -1,0 +1,24 @@
+#BlueJ class context
+comment0.params=
+comment0.target=LList()
+comment1.params=s
+comment1.target=void\ addLast(java.lang.String)
+comment10.params=
+comment10.target=java.lang.String\ toString()
+comment2.params=s
+comment2.target=void\ addFirst(java.lang.String)
+comment3.params=
+comment3.target=int\ size()
+comment4.params=index
+comment4.target=java.lang.String\ get(int)
+comment5.params=target
+comment5.target=int\ indexOf(java.lang.String)
+comment6.params=index\ s
+comment6.target=void\ set(int,\ java.lang.String)
+comment7.params=index
+comment7.target=void\ remove(int)
+comment8.params=
+comment8.target=void\ clear()
+comment9.params=index\ s
+comment9.target=void\ insert(int,\ java.lang.String)
+numComments=11
