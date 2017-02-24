@@ -1,9 +1,9 @@
-public class Node
+public class Node<X>
 {
-   String data;
-   Node next;
+   X data;
+   Node<X> next;
    
-   public Node(String d, Node n)
+   public Node(X d, Node<X> n)
    {
       data = d;
       next = n;

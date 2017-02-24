@@ -1,4 +1,4 @@
 #BlueJ class context
 comment0.params=d\ n
-comment0.target=Node(java.lang.String,\ Node)
+comment0.target=Node(java.lang.Object,\ Node)
 numComments=1

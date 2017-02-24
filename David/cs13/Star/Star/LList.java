@@ -1,14 +1,14 @@
-public class LList
+public class LList<X>
 {
-   Node head;
-   Node last;
+   Node<X> head;
+   Node<X> last;
    
    public LList()
    {
       head = null;
    }
    
-   public void addLast(String s)
+   public void addLast(X s)
    {
       if (head == null)
       {
@@ -22,7 +22,7 @@ public class LList
              // Hop to the next one
          //    n = n.next;
          //}
-         Node n;
+         Node<X> n;
          for (n = head; n.next != null; n = n.next);
          
          // Now we are at the last Node
@@ -30,7 +30,29 @@ public class LList
       }
    }
    
-   public void addFirst(String s)
+   public void add(X s)
+   {
+      if (head == null)
+      {
+         head = new Node(s, null);
+      }
+      else
+      {
+         //Node n = head;  // Start at the head
+         //while (n.next != null)  // As long as there is another Node
+         //{
+             // Hop to the next one
+         //    n = n.next;
+         //}
+         Node<X> n;
+         for (n = head; n.next != null; n = n.next);
+         
+         // Now we are at the last Node
+         n.next = new Node(s, null);
+      }
+   }
+
+   public void addFirst(X s)
    {
       
       head = new Node(s, head);
@@ -39,9 +61,13 @@ public class LList
    
    // Do this
    public int size()
-   {
-      int nodeAmount=0;
-      Node n;
+   { 
+      int nodeAmount=1;
+      Node<X> n;
+      if(head==null)
+      {
+         return 0; 
+       }
       for (n = head; n.next != null; n = n.next){
        nodeAmount+=1; 
       }
@@ -49,28 +75,27 @@ public class LList
    }
    
    // Do this
-   public String get(int index)
+   public X get(int index)
    {
-         int i=0;
-         Node n=head;
-         while(i!=index)
+         Node<X> n=head;
+         for(int i = 0; i < this.size()-1; i++)
           {
-              if(n==null)
+            if(n==null)
             {
                 throw new Inception();
             }
-            i++;
             n = n.next;
           }
+          //return null;
           return n.data;
     
    }
    
    // Do this
-   public int indexOf(String target)
+   public int indexOf(X target)
    {
       int index = 0; 
-      Node n;
+      Node<X> n;
       for (n = head; n.next != null; n = n.next){
           if(target==n.data)
             return index;
@@ -80,10 +105,9 @@ public class LList
    }
    
    // Needs work
-   public void set(int index, String s)
-   {
-      Node n = head;   // Start at the head
-      for (int i = 0; i <= index; i++)  // Count as we go
+   public void set(int index, X s){
+      Node<X> n = head;   // Start at the head
+      for (int i = 0; i < index; i++)  // Count as we go
       { 
          n = n.next;  // Hop to the next Node    
       }
@@ -95,15 +119,44 @@ public class LList
       
    }
    
-   // Do this
-   public void clear()
+   public void removeFirst()
    {
-      Node n = head;
-      for (n = head; n.next != null; n = n.next);
-        n=null;
+      Node<X> n = head;
+      if(n==null)
+      {
+        throw new Inception();
+      } 
+   
+     //for (n = head; n.next!=null; n=n)
+     //{
+       head=n.next;
+    // } 
+       
+       
    }
    
-   public void insert(int index, String s)
+      public void removeLast()
+   {
+      Node<X> n = head;
+      if(n==null)
+      {
+        throw new Inception();
+      } 
+         while(n.next!=null){
+           n=n.next;
+           if(n.next.next==null){
+               n.next=null;
+            }
+      }
+   }
+   
+   
+   
+   public void clear()
+   {
+      head = null; 
+    }
+   public void insert(int index, X s)
    {
       
    }
@@ -112,13 +165,16 @@ public class LList
    public String toString()
    {   
        String allData = "[";
-       Node n=head;
+       Node<X> n=head;
        while(n!=null)
        {
            allData+=n.data + ", ";
            n = n.next;
        }
-       allData = allData.substring(0, allData.length()-3);
+       if(allData!="[")
+       {
+           allData = allData.substring(0, allData.length()-2);
+        }  
        allData += "]";
        return allData;
     }

@@ -53,7 +53,7 @@ public class GenericList<X>{
     * return - integer value
     */
    public X get(int index)
-    {
+   {
       //if((index<size) && index>=0)
       //if((index<size) && index>=0)
       if((index<size) && index>=0)
