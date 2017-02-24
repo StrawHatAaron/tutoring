@@ -116,7 +116,7 @@ public class LList<X>
    
    public void remove(int index)
    {
-      
+      head = null;
    }
    
    public void removeFirst()
