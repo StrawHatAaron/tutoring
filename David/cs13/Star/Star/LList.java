@@ -154,6 +154,7 @@ public class LList<X>
    
    public void clear()
    {
+       //hello
       head = null; 
     }
    public void insert(int index, X s)
