@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html>
+
+	<body>
+	<canvas id="myCanvas" width="512" height="512" style="background:#224466; border:5px solid: #FF4375; "></canvas>
+	<script>
+
+	//cs10 Fall 2017
+	//Program: MoveArc
+	//Written By: ************************** @@&0!^
+
+		window.requestAnimFrame = (function(callback){
+			return window.requestAnimFrame||
+			window.webkitRequestAnimationFrame|| 
+			window.mozRequestAnimationFrame||
+			window.oRequestAnimationFrame||
+			window.mozRequestAnimationFrame||
+			function(callback){
+				window.setTimeout(callback, 1000/60);
+			};
+		})();
+
+		function drawCircle(myCircle, context){
+			context.beginPath();
+			context.rect(myCircle.x, myCircle.y, myCircle.width, myCircle.height);
+			context.arc(myCircle.x, myCircle.y, myCircle.dot, myCircle.dotArc, 2*Math.PI);
+			context.fillStyle = '#8ED6FF';//light blue
+			context.fillStyle = 'black';
+			context.fill();
+			context.lineWidth = myCircle.borderWidth;
+			context.strokeStyle = 'red';
+			context.stroke();
+		}
+
+		function animate(myCircle, canvas, context, startTime){
+			//update
+			var time = (new Date()).getTime() - startTime;
+			var linearSpeed = 100;
+			var newX = linearSpeed*time/1000;
+
+			if(newX < canvas.width - myCircle.width - myCircle.boarderWidth/2){
+				myCircle.x = newX;
+			}
+
+			//clear
+			context.clearRect(0,0,canvas.width, canvas.height);
+			drawCircle(myCircle, context);
+
+			//request new frame
+			requestAnimFrame(function(){
+				animate(myCircle, canvas, context, startTime);
+			});
+		}
+
+		var canvas = document.getElementById("myCanvas");
+		var context = canvas.getContext('2d')
+
+		var myCircle = {
+			x: 4,
+			y: 128,
+			width: 216,
+			height: 128,
+			dot: 64,
+			dotArc:0,
+			boarderWidth: 8 
+		};
+
+		drawCircle(myCircle, context);
+
+		//wait one second before starting animation
+		setTimeout(function(){
+			var startTime = (new Date()).getTime();
+			animate(myCircle, canvas, context, startTime);
+		}, 1000);
+	</script>
+</body>
+</html>
+
+
+

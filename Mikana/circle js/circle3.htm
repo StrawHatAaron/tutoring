@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+<body>
+
+<canvas id="myCanvas" width="400" height="400" style="border:20px solid #d3d3d3; background:#224466" >
+Your browser doe not support the HTML5 canvas tag. </canvas> 
+
+<script type="text/javascript">
+	//cs10 Fall 2017 - Circle 3 lab 
+
+	//context.arc(x,y,r,sAngle, eAngle, counterClockwise)
+
+	// x (green)	- Center 		arc(100, 75, 10, 0*Math.PI, 1.5*Math.PI);
+	// y (red)		- Start Angle 		
+	// r (blue)	-End Angle
+	
+	//green #00A308
+	//Yellow #F6FF00
+	//Blue #0300FF
+	//White #FFFFFF Black #000000
+
+	function drawit(form){
+		var c=document.getElementById("myCanvas");
+		var ctx = c.getContext("2d");
+		ctx.fillStyle = "#173F17";//green
+		ctx.strokeStyle = "#FF3F44";//bright red
+		ctx.lineWidth = 10;
+		var x=prompt("Enter Cicle X value (Range 0 to 400)", "200");
+		var y=prompt("Enter Cicle X value (Range 0 to 400)", "200");
+		ctx.beginPath();
+		ctx.arc(x,y,50,0,2*Math.PI);
+		ctx.fill();
+		ctx.stroke();
+	}
+
+	function clearit(form){
+		var c=document.getElementsByTagName('');
+		var ctx=c.getContext("2d");
+		ctx.beginPath();
+		ctx.strokeStyle="C3C3C3";//grey
+		ctx.fillStyle="White";
+		ctx.fillRect(0,0,400,400);
+	}
+
+</script>
+<TABLE>
+	<TR><TD><INPUT TYPE="button" VALUE="Draw" ONCLICK="drawit(this.form)"></TR></TD>
+	<TR><TD><INPUT TYPE="button" VALUE="Clear" ONCLICK="clearit(this.form)"></TR></TD>
+</TABLE>	
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
